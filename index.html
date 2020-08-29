@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <div id="program">
+        <p>Binary to Decimal</p>
+        <p> Please insert a binary number up to 8 digits</p>
+        <input type="text" id="binaryInput" maxlength="8">
+        <button id="binaryButton">Convert</button>
+        <p></p>
+        <div id="result"></div>
+        <script>
+            var input = document.getElementById("binaryInput");
+            var button = document.getElementById("binaryButton");
+            var result = document.getElementById("result");
+
+
+            function btd(num, exp) {
+                var btdResult = (2 ** exp) * num;
+                return btdResult;
+            }
+            function press() {
+                var binaryResult = 0;
+                var inputValue = input.value;
+                var seila = inputValue.length;
+                /*console.log(inputValue);
+                console.log(input.value[1]); */
+                for (i = 0; i < seila; i++) {
+                    if (inputValue[i] == 0 || inputValue[i] == 1) {
+                        var vai = seila - 1 - i;
+                        binaryResult += btd(inputValue[vai], i);
+                        result.innerText = `The result is: ${binaryResult}`;
+                    } else {
+                        result.innerText = 'Please only insert binary numbers';
+                        break;
+                    }
+                }
+            }
+
+            button.addEventListener('click', press);
+        </script>
+    </div>
+</body>
+</html>
